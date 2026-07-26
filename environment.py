@@ -1,4 +1,6 @@
 ## The environment for which everyone's play relies on
+import random
+from abc import ABC, abstractmethod
 
 ## ---------- CONSTANTS
 EMPTY = ''
@@ -11,12 +13,35 @@ LINES = [
 ]
 
 
+## ----------- AGENT GENERAL ABSTRACT CLASS + RANDOM AGENT's
+
+# An agent ABC (abstract base class) with a choose_move method which would
+# be implemented differently for q-learning, minimax, and the random agent
+class Agent(ABC):
+    @abstractmethod
+    def choose_move(self, board) -> int:
+        pass
+
+
+
+# Random agent's class implementation
+class RandomAgent(Agent):
+    def choose_move(self, board) -> int:
+        # we get the list of available moves on the board
+        legal = legal_moves(board)
+        print(f"Legal: {legal}")
+
+        # we pick one of them at random and return it
+        return random.choice(legal)
+
+
+
 
 
 ## ------------ METHODS
 # A function that returns a new board with 9 empty positions
 def new_board() -> tuple[str, ...]:
-    return tuple("",) * 9
+    return ("",) * 9
 
 
 # A function that returns a list of all legal moves on the board
@@ -69,11 +94,41 @@ def check_winner(board: tuple[str, ...]) -> str | None:
 
 
 
+# One of the most important functions. Starts a game between two agents
+def play_game(agent_x: Agent, agent_o: Agent):
+    # we create a new board at the start of the game
+    board = new_board()
 
+    # assign the agents an X and O (this will be interchanged between both agents later on when playing a set number of games)
+    agents = { 'X': agent_x, 'O': agent_o }
+    history = [] # empty list to keep state before the agent's move is applied
+
+    while True:
+        # retrieve the current plater to play
+        mark = current_player(board)
+
+        # the agent with the current turn chooses a move from the available legal ones
+        action = agents[mark].choose_move(board)
+
+        # important here that we record the state of the board, with the move the agent intends to make
+        # before actually applying it next
+        history.append((mark, board, action))
+
+        # apply the move here
+        board = apply_move(board, action, mark)
+
+        # after each move is applied we check whether we have a winner
+        res = check_winner(board)
+
+        # we stated earlier that none meant that the game is still going on
+        if res is not None:
+            return res, history
 
 
 
 ## Test methods
 
-b = ("X", "X", "O", "0", "X", "X", "0", "0", "X")
-print(check_winner(b))
+# b = ("X", "X", "O", "0", "X", "X", "0", "0", "X")
+# print(check_winner(b))
+
+print(play_game(RandomAgent(), RandomAgent()))
