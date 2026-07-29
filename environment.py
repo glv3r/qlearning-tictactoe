@@ -1,6 +1,9 @@
-## The environment for which everyone's play relies on
-import random
+## The environment for which everyone's play relies on. The functions here are used/called
+## everywhere else, cause nothing can be tested without a working game.
+
+
 from abc import ABC, abstractmethod
+from models import History
 
 ## ---------- CONSTANTS
 EMPTY = ''
@@ -12,27 +15,21 @@ LINES = [
     (0, 4, 8), (2, 4, 6) # diagonal
 ]
 
-
-## ----------- AGENT GENERAL ABSTRACT CLASS + RANDOM AGENT's
+## ----------- AGENT GENERAL ABSTRACT CLASS
 
 # An agent ABC (abstract base class) with a choose_move method which would
 # be implemented differently for q-learning, minimax, and the random agent
+from abc import ABC, abstractmethod
+
+
 class Agent(ABC):
+
+    def __init__(self, agent_name):
+        self.agent_name = agent_name    # every random agent can be assigned a name. Cute touch
+
     @abstractmethod
     def choose_move(self, board) -> int:
         pass
-
-
-
-# Random agent's class implementation
-class RandomAgent(Agent):
-    def choose_move(self, board) -> int:
-        # we get the list of available moves on the board
-        legal = legal_moves(board)
-        print(f"Legal: {legal}")
-
-        # we pick one of them at random and return it
-        return random.choice(legal)
 
 
 
@@ -46,7 +43,7 @@ def new_board() -> tuple[str, ...]:
 
 # A function that returns a list of all legal moves on the board
 def legal_moves(board: tuple[str, ...]):
-    return [i for i, val in enumerate(board) if val == EMPTY] # returning the indexes of those positions
+    return [i for i, val in enumerate(board) if val == EMPTY]   # returning the indexes of those positions
 
 
 # A function that returns the player whose turn it currently is
@@ -101,7 +98,7 @@ def play_game(agent_x: Agent, agent_o: Agent):
 
     # assign the agents an X and O (this will be interchanged between both agents later on when playing a set number of games)
     agents = { 'X': agent_x, 'O': agent_o }
-    history = [] # empty list to keep state before the agent's move is applied
+    history: list[History] = [] # empty list to keep state before the agent's move is applied
 
     while True:
         # retrieve the current plater to play
@@ -112,7 +109,7 @@ def play_game(agent_x: Agent, agent_o: Agent):
 
         # important here that we record the state of the board, with the move the agent intends to make
         # before actually applying it next
-        history.append((mark, board, action))
+        history.append(History(mark=mark, board=board, action=action))
 
         # apply the move here
         board = apply_move(board, action, mark)
@@ -124,11 +121,3 @@ def play_game(agent_x: Agent, agent_o: Agent):
         if res is not None:
             return res, history
 
-
-
-## Test methods
-
-# b = ("X", "X", "O", "0", "X", "X", "0", "0", "X")
-# print(check_winner(b))
-
-print(play_game(RandomAgent(), RandomAgent()))
