@@ -3,7 +3,7 @@
 
 
 from abc import ABC, abstractmethod
-from models import History
+from environment.models import History
 
 ## ---------- CONSTANTS
 EMPTY = ''

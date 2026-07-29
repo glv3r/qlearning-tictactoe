@@ -1,7 +1,7 @@
 import random
 
 
-from environment import Agent, legal_moves
+from environment.environment import Agent, legal_moves
 
 
 # Random agent's class implementation

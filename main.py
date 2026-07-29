@@ -1,7 +1,7 @@
 from typing import Counter
 
-from environment import apply_move, check_winner, legal_moves, new_board, play_game
-from random_agent import RandomAgent
+from environment.environment import apply_move, check_winner, legal_moves, new_board, play_game
+from agents.random_agent import RandomAgent
 
 
 # batch testing for 5000 games between two random agents
