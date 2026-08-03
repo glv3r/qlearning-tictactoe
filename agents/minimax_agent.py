@@ -19,21 +19,9 @@ class MinimaxAgent(Agent):
 
 
 def minimax(board, player: str):
-    # use player to declare who's opponent and who's minimax (player)
-    opp = 'O' if player == 'X' else 'X'
-
+  
     # base case to check for a result at the particular board's state
     r = check_winner(board=board)
-
-    # match r:
-    #     case player if player == r:
-    #         return 1
-
-    #     case 'draw':
-    #         return 0
-
-    #     case opp if opp == r:
-    #         return -1
 
     if r == player:
         return 1
@@ -43,10 +31,12 @@ def minimax(board, player: str):
         return -1
 
     # recursive case for when the game is ongoing still (no result at all)
-    if current_player(board) == player:
+    turn = current_player(board)
+
+    if turn == player:
         best = float('-inf')
         for m in legal_moves(board):
-            score = minimax(apply_move(board, m, current_player(board)))
+            score = minimax(apply_move(board, m, turn), player)
             best = max(best, score)
 
         return best
@@ -54,7 +44,7 @@ def minimax(board, player: str):
     else:
         best = float('inf')
         for m in legal_moves(board):
-            score = minimax(apply_move(board, m, current_player(board)))
+            score = minimax(apply_move(board, m, turn), player)
             best = min(best, score)
 
         return best

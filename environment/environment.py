@@ -28,7 +28,7 @@ class Agent(ABC):
         self.agent_name = agent_name    # every random agent can be assigned a name. Cute touch
 
     @abstractmethod
-    def choose_move(self, board) -> int:
+    def choose_move(self, board, mark) -> int:
         pass
 
 
@@ -89,6 +89,14 @@ def check_winner(board: tuple[str, ...]) -> str | None:
     return None
 
 
+# function to render the board in the terminal, just for visuals to
+# see the agents' moves
+def render(board):
+    for row in range(3):
+        cells = board[row*3 : row*3+3]
+        print(' ' + ' | '.join(cells))
+        if row < 2: print('---+---+---')
+
 
 
 # One of the most important functions. Starts a game between two agents
@@ -105,7 +113,7 @@ def play_game(agent_x: Agent, agent_o: Agent):
         mark = current_player(board)
 
         # the agent with the current turn chooses a move from the available legal ones
-        action = agents[mark].choose_move(board)
+        action = agents[mark].choose_move(board, mark)
 
         # important here that we record the state of the board, with the move the agent intends to make
         # before actually applying it next
