@@ -3,6 +3,7 @@
 
 
 from abc import ABC, abstractmethod
+from time import sleep
 from environment.models import History
 
 ## ---------- CONSTANTS
@@ -97,6 +98,20 @@ def render(board):
         print(' ' + ' | '.join(cells))
         if row < 2: print('---+---+---')
 
+
+# function that takes the history of a game and then replays 
+# it, drawing each move 
+def replay(history, result, delay=0.5):
+    board = new_board()
+    render(board)
+
+    for e in history:
+        board = apply_move(board, e.action, e.mark)
+        print()
+        render(board)
+        sleep(delay)
+        
+    print(f"\nResult: {result}")
 
 
 # One of the most important functions. Starts a game between two agents

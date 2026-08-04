@@ -1,13 +1,13 @@
 from collections import Counter
 
 from agents.minimax_agent import MinimaxAgent
-from environment.environment import Agent, apply_move, check_winner, legal_moves, new_board, play_game
+from environment.environment import Agent, apply_move, check_winner, legal_moves, new_board, play_game, replay
 from agents.random_agent import RandomAgent
 
 
-# batch testing for 5000 games between two random agents
+# batch testing for n games between two agents
 
-# Changed to test minimax vs random
+# declaring minimax and random agents
 baidoo = MinimaxAgent('Baidoo')
 tetteh = MinimaxAgent('Tetteh')
 
@@ -66,6 +66,8 @@ def run_matchup(agent_a: Agent, agent_b: Agent, n: int, expect_no_loss_for=None)
     return counter 
 
 if __name__ == '__main__':
-    print('minimax vs random:', run_matchup(baidoo, glover, 1000, expect_no_loss_for=baidoo))
-    print('minimax vs minimax:', run_matchup(tetteh, baidoo, 50,  expect_no_loss_for=None))   # all draws expected
-    print('random vs random:', run_matchup(glover, akosua, 5000))
+    # print('minimax vs random:', run_matchup(baidoo, glover, 1000, expect_no_loss_for=baidoo))
+    # print('minimax vs minimax:', run_matchup(tetteh, baidoo, 50,  expect_no_loss_for=None))
+    # print('random vs random:', run_matchup(glover, akosua, 5000))
+    r, h = play_game(baidoo, glover)
+    replay(h, r)
