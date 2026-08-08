@@ -71,3 +71,19 @@ if __name__ == '__main__':
     # print('random vs random:', run_matchup(glover, akosua, 5000))
     r, h = play_game(baidoo, glover)
     replay(h, r)
+
+
+reward_scheme = {'win': 1, 'loss': 0, 'draw': -1}
+def reward(result, perspective_mark, reward_scheme):
+     if result == 'draw':
+          return reward_scheme['draw']
+     elif result == perspective_mark:
+          return reward_scheme['win']
+     else:
+          return reward_scheme['loss']
+
+Q_table = {}
+while Q_table['state']:
+     if 'sta'
+
+          
