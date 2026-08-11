@@ -1,8 +1,10 @@
 from collections import Counter
 
 from agents.minimax_agent import MinimaxAgent
+from agents.qtable_agent import QTableAgent
 from environment.environment import Agent, apply_move, check_winner, legal_moves, new_board, play_game, replay
 from agents.random_agent import RandomAgent
+from environment.q_training import train
 
 
 # batch testing for n games between two agents
@@ -13,6 +15,8 @@ tetteh = MinimaxAgent('Tetteh')
 
 glover = RandomAgent('Glover')
 akosua = RandomAgent('Akosua')
+
+q1 = QTableAgent("Q1", epsilon=1)
 
 
 
@@ -69,5 +73,9 @@ if __name__ == '__main__':
     # print('minimax vs random:', run_matchup(baidoo, glover, 1000, expect_no_loss_for=baidoo))
     # print('minimax vs minimax:', run_matchup(tetteh, baidoo, 50,  expect_no_loss_for=None))
     # print('random vs random:', run_matchup(glover, akosua, 5000))
-    r, h = play_game(baidoo, glover)
-    replay(h, r)
+    # r, h = play_game(baidoo, glover)
+    # replay(h, r)
+
+
+    train(agent=q1, episodes=10000, alpha=0.5, gamma=0.9, epsilon_decay=0.0001, min_epsilon=0.05)
+    q1.save_q_table("q_table_trained")
