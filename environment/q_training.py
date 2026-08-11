@@ -1,6 +1,5 @@
 import random
 from environment.environment import play_game
-from main import reward
 
 
 reward_scheme = {'win': 1, 'loss': -1, 'draw': 0}
@@ -48,3 +47,12 @@ def train(agent, episodes, alpha, gamma, epsilon_decay, min_epsilon):
 
 
 
+def reward(result, perspective_mark, reward_scheme):
+    if result == 'draw':
+        return reward_scheme['draw']
+
+    elif result == perspective_mark:
+        return reward_scheme['win']
+
+    else:
+        return reward_scheme['loss']
