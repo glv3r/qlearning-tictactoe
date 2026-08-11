@@ -73,7 +73,7 @@ if __name__ == '__main__':
     replay(h, r)
 
 
-reward_scheme = {'win': 1, 'loss': 0, 'draw': -1}
+
 def reward(result, perspective_mark, reward_scheme):
      if result == 'draw':
           return reward_scheme['draw']
@@ -82,8 +82,6 @@ def reward(result, perspective_mark, reward_scheme):
      else:
           return reward_scheme['loss']
 
-Q_table = {}
-while Q_table['state']:
-     if 'sta'
+
 
           
