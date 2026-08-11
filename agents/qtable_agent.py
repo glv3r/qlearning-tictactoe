@@ -33,7 +33,23 @@ class QTableAgent(Agent):
             return random.choice(best_actions)
 
 
-            
+    def update(self, state, action, reward, next_state, alpha, gamma):
+        old_value = self.q_table[state][action]
+        if next_state is None:
+            future_value = 0
+        else:
+            self.ensure_state(next_state)
+            future_value = max(self.q_table[next_state].values())
+
+        target = reward + gamma * future_value
+
+        new_value = old_value + alpha * (target - old_value)
+
+        self.q_table[state][action] = new_value 
+    
+
+
+    
 
         
         
