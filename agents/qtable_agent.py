@@ -1,3 +1,4 @@
+import pickle
 import random
 
 from environment.environment import Agent, legal_moves
@@ -46,6 +47,20 @@ class QTableAgent(Agent):
         new_value = old_value + alpha * (target - old_value)
 
         self.q_table[state][action] = new_value 
+
+
+
+    def save_q_table(self, filename):
+        with open(filename, 'wb') as file:
+            data = self.q_table
+
+            pickle.dump(data, file)
+
+
+    def load_q_table(self, filename):
+        with open(filename, 'rb') as file:
+
+            self.q_table = pickle.load(file)        
     
 
 

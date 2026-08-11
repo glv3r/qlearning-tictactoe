@@ -4,6 +4,7 @@ from main import reward
 
 
 reward_scheme = {'win': 1, 'loss': -1, 'draw': 0}
+
 def train(agent, episodes, alpha, gamma, epsilon_decay, min_epsilon):
     random.seed(6)
     for ep in range(episodes):
