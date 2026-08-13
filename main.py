@@ -2,10 +2,17 @@ from collections import Counter
 
 from agents.minimax_agent import MinimaxAgent
 from agents.qtable_agent import QTableAgent
-from environment.environment import Agent, apply_move, check_winner, legal_moves, new_board, play_game, replay
 from agents.random_agent import RandomAgent
+from environment.environment import (
+    Agent,
+    apply_move,
+    check_winner,
+    legal_moves,
+    new_board,
+    play_game,
+    replay,
+)
 from environment.q_training import train
-
 
 # batch testing for n games between two agents
 
