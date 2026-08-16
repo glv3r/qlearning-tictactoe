@@ -1,0 +1,1955 @@
+[
+  {
+    "knob": "alpha",
+    "value": 0.05,
+    "note": "very low",
+    "params": {
+      "alpha": 0.05,
+      "gamma": 0.9,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.608,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.683,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.755,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.782,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.796,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.821,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.829,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.851,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.873,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.905,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.902,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.904,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.885,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.872,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.928,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.901,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.897,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.907,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.858,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.899,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.891,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.867,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.911,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.905,
+        "draw_rate": 0.258
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.909,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.901,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.901,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.914,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.897,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.887,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.889,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.902,
+        "draw_rate": 0.562
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.918,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.892,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.877,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.86,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.922,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.866,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.876,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "alpha",
+    "value": 0.5,
+    "note": "baseline",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.9,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.602,
+        "draw_rate": 0.044
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.62,
+        "draw_rate": 0.364
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.692,
+        "draw_rate": 0.04
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.739,
+        "draw_rate": 0.048
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.787,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.794,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.814,
+        "draw_rate": 0.276
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.84,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.856,
+        "draw_rate": 0.238
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.852,
+        "draw_rate": 0.254
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.897,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.862,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.86,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.872,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.88,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.936,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.876,
+        "draw_rate": 0.654
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.866,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.897,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.871,
+        "draw_rate": 0.726
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.909,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.889,
+        "draw_rate": 0.676
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.865,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.903,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.847,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.917,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.911,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.881,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.92,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.878,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.884,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.891,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.896,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "alpha",
+    "value": 0.95,
+    "note": "very high",
+    "params": {
+      "alpha": 0.95,
+      "gamma": 0.9,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.548,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.644,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.712,
+        "draw_rate": 0.46
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.738,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.768,
+        "draw_rate": 0.046
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.745,
+        "draw_rate": 0.15
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.792,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.833,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.807,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.788,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.813,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.826,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.791,
+        "draw_rate": 0.758
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.825,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.869,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.808,
+        "draw_rate": 0.254
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.863,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.853,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.872,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.846,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.853,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.853,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.88,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.877,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.869,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.899,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.928,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.847,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.873,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.9,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.916,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.934,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.916,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.926,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.921,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.944,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.935,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.918,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.921,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.948,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "gamma",
+    "value": 0.1,
+    "note": "very low",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.1,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.564,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.662,
+        "draw_rate": 0.132
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.705,
+        "draw_rate": 0.124
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.73,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.755,
+        "draw_rate": 0.124
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.785,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.781,
+        "draw_rate": 0.626
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.815,
+        "draw_rate": 0.69
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.864,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.853,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.827,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.844,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.878,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.859,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.906,
+        "draw_rate": 0.74
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.875,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.932,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.862,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.905,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.908,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.882,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.901,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.902,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.906,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.863,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.875,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.875,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.874,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.907,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.914,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.909,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.913,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.94,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.934,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.943,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.926,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.938,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.923,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.922,
+        "draw_rate": 0.5
+      }
+    ],
+    "vs_random_win_rate": 0.91,
+    "vs_minimax_draw_rate": 0.5
+  },
+  {
+    "knob": "gamma",
+    "value": 0.9,
+    "note": "baseline",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.9,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.602,
+        "draw_rate": 0.044
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.62,
+        "draw_rate": 0.364
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.692,
+        "draw_rate": 0.04
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.739,
+        "draw_rate": 0.048
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.787,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.794,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.814,
+        "draw_rate": 0.276
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.84,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.856,
+        "draw_rate": 0.238
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.852,
+        "draw_rate": 0.254
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.897,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.862,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.86,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.872,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.88,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.936,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.876,
+        "draw_rate": 0.654
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.866,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.897,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.871,
+        "draw_rate": 0.726
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.909,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.889,
+        "draw_rate": 0.676
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.865,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.903,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.847,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.917,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.911,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.881,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.92,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.878,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.884,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.891,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.896,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "gamma",
+    "value": 0.99,
+    "note": "very high",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.99,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.602,
+        "draw_rate": 0.044
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.646,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.709,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.703,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.769,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.779,
+        "draw_rate": 0.098
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.766,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.836,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.834,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.853,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.874,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.871,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.869,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.838,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.886,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.931,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.858,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.906,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.874,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.845,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.927,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.902,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.869,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.866,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.864,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.886,
+        "draw_rate": 0.67
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.864,
+        "draw_rate": 0.656
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.865,
+        "draw_rate": 0.666
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.853,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.897,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.894,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.882,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.891,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.888,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.891,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.912,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.923,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.886,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "epsilon_decay",
+    "value": 0.001,
+    "note": "fast decay",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.9,
+      "epsilon_decay": 0.001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.565,
+        "draw_rate": 0.032
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.639,
+        "draw_rate": 0.026
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.705,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.672,
+        "draw_rate": 0.034
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.758,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.753,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.783,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.835,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.764,
+        "draw_rate": 0.202
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.815,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.806,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.803,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.762,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.786,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.807,
+        "draw_rate": 0.378
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.833,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.832,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.815,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.86,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.864,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.856,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.867,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.867,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.851,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.875,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.907,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.883,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.862,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.896,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.877,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.902,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.906,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.896,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.876,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.87,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.886,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.902,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.886,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.895,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.857,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "epsilon_decay",
+    "value": 0.0001,
+    "note": "baseline",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.9,
+      "epsilon_decay": 0.0001,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.602,
+        "draw_rate": 0.044
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.62,
+        "draw_rate": 0.364
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.692,
+        "draw_rate": 0.04
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.739,
+        "draw_rate": 0.048
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.787,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.794,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.814,
+        "draw_rate": 0.276
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.84,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.856,
+        "draw_rate": 0.238
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.852,
+        "draw_rate": 0.254
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.897,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.862,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.86,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.872,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.88,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.936,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.876,
+        "draw_rate": 0.654
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.866,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.897,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.871,
+        "draw_rate": 0.726
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.909,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.889,
+        "draw_rate": 0.676
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.865,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.903,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.847,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.917,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.887,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.919,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.93,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.911,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.881,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.92,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.893,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.878,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.884,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.891,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.896,
+    "vs_minimax_draw_rate": 1.0
+  },
+  {
+    "knob": "epsilon_decay",
+    "value": 2e-05,
+    "note": "slow decay",
+    "params": {
+      "alpha": 0.5,
+      "gamma": 0.9,
+      "epsilon_decay": 2e-05,
+      "min_epsilon": 0.05
+    },
+    "episodes": 20000,
+    "seed": 20250816,
+    "curve": [
+      {
+        "episodes": 500,
+        "win_rate": 0.511,
+        "draw_rate": 0.196
+      },
+      {
+        "episodes": 1000,
+        "win_rate": 0.623,
+        "draw_rate": 0.102
+      },
+      {
+        "episodes": 1500,
+        "win_rate": 0.728,
+        "draw_rate": 0.124
+      },
+      {
+        "episodes": 2000,
+        "win_rate": 0.749,
+        "draw_rate": 0.042
+      },
+      {
+        "episodes": 2500,
+        "win_rate": 0.771,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 3000,
+        "win_rate": 0.788,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 3500,
+        "win_rate": 0.825,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4000,
+        "win_rate": 0.801,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 4500,
+        "win_rate": 0.803,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5000,
+        "win_rate": 0.808,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 5500,
+        "win_rate": 0.857,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6000,
+        "win_rate": 0.841,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 6500,
+        "win_rate": 0.874,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7000,
+        "win_rate": 0.861,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 7500,
+        "win_rate": 0.869,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 8000,
+        "win_rate": 0.878,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 8500,
+        "win_rate": 0.871,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 9000,
+        "win_rate": 0.876,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 9500,
+        "win_rate": 0.888,
+        "draw_rate": 0.256
+      },
+      {
+        "episodes": 10000,
+        "win_rate": 0.891,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 10500,
+        "win_rate": 0.861,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 11000,
+        "win_rate": 0.89,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 11500,
+        "win_rate": 0.883,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 12000,
+        "win_rate": 0.9,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 12500,
+        "win_rate": 0.902,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 13000,
+        "win_rate": 0.906,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 13500,
+        "win_rate": 0.919,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 14000,
+        "win_rate": 0.87,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 14500,
+        "win_rate": 0.922,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 15000,
+        "win_rate": 0.91,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 15500,
+        "win_rate": 0.909,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 16000,
+        "win_rate": 0.904,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 16500,
+        "win_rate": 0.905,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 17000,
+        "win_rate": 0.914,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 17500,
+        "win_rate": 0.937,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 18000,
+        "win_rate": 0.891,
+        "draw_rate": 0.0
+      },
+      {
+        "episodes": 18500,
+        "win_rate": 0.916,
+        "draw_rate": 1.0
+      },
+      {
+        "episodes": 19000,
+        "win_rate": 0.937,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 19500,
+        "win_rate": 0.948,
+        "draw_rate": 0.5
+      },
+      {
+        "episodes": 20000,
+        "win_rate": 0.957,
+        "draw_rate": 1.0
+      }
+    ],
+    "vs_random_win_rate": 0.936,
+    "vs_minimax_draw_rate": 1.0
+  }
+]

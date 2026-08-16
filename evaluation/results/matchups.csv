@@ -1,0 +1,5 @@
+matchup,agent_a,agent_b,games,seed,a_wins,b_wins,draws,a_win_rate,b_win_rate,draw_rate
+Q-agent vs random,Q-agent,Random,1000,20250816,920,4,76,0.92,0.004,0.076
+Q-agent vs minimax,Q-agent,Minimax,1000,20250816,0,0,1000,0.0,0.0,1.0
+minimax vs random,Minimax,Random,1000,20250816,897,0,103,0.897,0.0,0.103
+random vs random,Random A,Random B,1000,20250816,410,472,118,0.41,0.472,0.118

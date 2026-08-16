@@ -1,0 +1,10 @@
+knob,value,note,alpha,gamma,epsilon_decay,min_epsilon,episodes,seed,final_epsilon,vs_random_wins,vs_random_losses,vs_random_draws,vs_random_win_rate,vs_minimax_wins,vs_minimax_losses,vs_minimax_draws,vs_minimax_draw_rate
+alpha,0.05,very low,0.05,0.9,0.0001,0.05,20000,20250816,0.05,876,48,76,0.876,0,0,1000,1.0
+alpha,0.5,baseline,0.5,0.9,0.0001,0.05,20000,20250816,0.05,896,15,89,0.896,0,0,1000,1.0
+alpha,0.95,very high,0.95,0.9,0.0001,0.05,20000,20250816,0.05,948,9,43,0.948,0,0,1000,1.0
+gamma,0.1,very low,0.5,0.1,0.0001,0.05,20000,20250816,0.05,910,10,80,0.91,0,500,500,0.5
+gamma,0.9,baseline,0.5,0.9,0.0001,0.05,20000,20250816,0.05,896,15,89,0.896,0,0,1000,1.0
+gamma,0.99,very high,0.5,0.99,0.0001,0.05,20000,20250816,0.05,886,7,107,0.886,0,0,1000,1.0
+epsilon_decay,0.001,fast decay,0.5,0.9,0.001,0.05,20000,20250816,0.05,857,42,101,0.857,0,0,1000,1.0
+epsilon_decay,0.0001,baseline,0.5,0.9,0.0001,0.05,20000,20250816,0.05,896,15,89,0.896,0,0,1000,1.0
+epsilon_decay,2e-05,slow decay,0.5,0.9,2e-05,0.05,20000,20250816,0.6,936,15,49,0.936,0,0,1000,1.0
