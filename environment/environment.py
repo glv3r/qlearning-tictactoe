@@ -20,9 +20,6 @@ LINES = [
 
 # An agent ABC (abstract base class) with a choose_move method which would
 # be implemented differently for q-learning, minimax, and the random agent
-from abc import ABC, abstractmethod
-
-
 class Agent(ABC):
 
     def __init__(self, agent_name):
