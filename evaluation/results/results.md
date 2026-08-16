@@ -45,7 +45,16 @@ One knob varied at a time, the others held at the baseline (alpha 0.5, gamma 0.9
 
 The gamma result is the clean confirmation of the theory. With the discount factor that low, the reward at the end of the game is worth almost nothing by the time it propagates back to the opening moves, so the agent never learns which early moves set up the win. It still punishes a random opponent's blunders, but against perfect play it has nothing to fall back on.
 
-**The alpha and epsilon predictions did not reproduce at 20,000 episodes.** High alpha was expected to look noisy and unstable and fast epsilon decay was expected to plateau early; both still reached a 100% draw rate against minimax. Tic-tac-toe is small enough (5,478 reachable states) that the agent visits the whole space many times over, which papers over settings that would be fatal on a larger problem. Reporting this rather than the prediction is the honest version.
+**The alpha and epsilon predictions did not reproduce in the final numbers.** High alpha was expected to look noisy and unstable and fast epsilon decay was expected to plateau early; both still finished on a 100% draw rate against minimax. Tic-tac-toe is small enough (5,478 reachable states) that the agent visits the whole space many times over, which papers over settings that would be fatal on a larger problem. Reporting this rather than the prediction is the honest version.
+
+**Finishing at 100% is not the same as having converged.** Over the last quarter of the training probes, these settings were still dropping in and out of optimal play rather than holding it:
+
+- `alpha = 0.05` (very low): optimal on only 70% of the final 10 probes, despite a 100% draw rate in the end-of-training scoring.
+- `epsilon_decay = 2e-05` (slow decay): optimal on only 30% of the final 10 probes, despite a 100% draw rate in the end-of-training scoring.
+
+Slow epsilon decay is the clearest case. It is still roughly 60% exploratory when training stops, so the Q-table is being churned right to the end and the greedy policy it implies is only intermittently optimal. It scores 100% in the table because the final measurement happens to land on a good moment. This is the strongest argument in the study for reporting learning curves and not just final numbers.
+
+**A caveat on reading the lower panel.** Minimax plays deterministically, and a greedy Q-agent is deterministic too apart from how it breaks ties between equally valued moves. So a probe of N games isn't N independent samples — it is largely the same two games (once as X, once as O) played over and over. Measured directly, the fully trained agent produces only three distinct game lines in 200 games against minimax, and 84% of the points on that panel land exactly on 0%, 50% or 100%. Read 50% as "draws with one mark, loses with the other", not as a probability. The faint line is the raw measurement and the bold line is a 5-point trailing average, since the raw signal flips between those levels as tie-breaks shift mid-training.
 
 ## Learning curves
 

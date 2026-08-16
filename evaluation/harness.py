@@ -77,13 +77,22 @@ def evaluate(agent, opponent, n_games, seed=None):
 
 
 def train_with_curve(agent, episodes, eval_every, eval_games, opponent,
-                     alpha, gamma, epsilon_decay, min_epsilon, seed=None):
-    """Train in chunks, measuring win rate against opponent after each chunk.
+                     alpha, gamma, epsilon_decay, min_epsilon, seed=None,
+                     optimal_opponent=None, optimal_games=None):
+    """Train in chunks, measuring the agent after each chunk.
 
-    Returns a list of (episodes_trained, win_rate) points, which is what the learning
-    curve plots are drawn from. The whole run sits inside stable_rng so that training and
-    measurement share one continuous random stream seeded exactly once (see compat.py for
-    why that needs a workaround).
+    Returns a list of points, which is what the learning curve plots are drawn from.
+    Each point has the episodes trained so far and the win rate against `opponent`.
+
+    If `optimal_opponent` is given (in practice, minimax) each point also gets a draw
+    rate against it. That second measurement is the one that actually tells settings
+    apart: beating a random opponent is an easy bar that even a badly tuned agent clears,
+    so the win rate saturates around 90% and every curve ends up on top of every other.
+    Drawing against perfect play is pass/fail on never making a losing mistake, so it
+    stays sensitive all the way to convergence.
+
+    The whole run sits inside stable_rng so training and measurement share one continuous
+    random stream seeded exactly once (see compat.py for why that needs a workaround).
     """
     curve = []
 
@@ -93,7 +102,23 @@ def train_with_curve(agent, episodes, eval_every, eval_games, opponent,
 
             train(agent, chunk, alpha, gamma, epsilon_decay, min_epsilon)
 
-            result = evaluate(agent, opponent, eval_games)
-            curve.append((completed + chunk, result['a_win_rate']))
+            point = {
+                "episodes": completed + chunk,
+                "win_rate": evaluate(agent, opponent, eval_games)['a_win_rate'],
+            }
+
+            if optimal_opponent is not None:
+                # Snapshot the RNG, take the measurement, then put the stream back exactly
+                # where it was. Measuring consumes random numbers, and without this the
+                # extra probe would shift every training game that follows it, changing
+                # results that were already published. This way the numbers this study
+                # produced before the probe existed still reproduce exactly.
+                snapshot = random.getstate()
+                point["draw_rate"] = evaluate(
+                    agent, optimal_opponent, optimal_games or eval_games
+                )['draw_rate']
+                random.setstate(snapshot)
+
+            curve.append(point)
 
     return curve

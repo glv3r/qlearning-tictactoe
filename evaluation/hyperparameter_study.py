@@ -36,6 +36,7 @@ DEFAULT_EPISODES = 20000
 DEFAULT_EVAL_EVERY = 500
 DEFAULT_EVAL_GAMES = 1000
 DEFAULT_FINAL_GAMES = 1000
+DEFAULT_CURVE_MINIMAX_GAMES = 500
 
 # The settings the shipped agent was trained with (main.py:87), so the study is anchored
 # to the agent we're actually reporting on rather than to an arbitrary starting point.
@@ -74,7 +75,8 @@ CSV_COLUMNS = [
 ]
 
 
-def run_one(knob, value, episodes, eval_every, eval_games, final_games, seed):
+def run_one(knob, value, episodes, eval_every, eval_games, final_games, seed,
+            curve_minimax_games=DEFAULT_CURVE_MINIMAX_GAMES):
     """Train one agent from scratch with a single knob changed, and measure it."""
     params = dict(BASELINE)
     params[knob] = value
@@ -95,6 +97,10 @@ def run_one(knob, value, episodes, eval_every, eval_games, final_games, seed):
         # Every run gets the same seed on purpose, so differences between the curves come
         # from the hyper-parameter and not from a different sequence of games.
         seed=seed,
+        # The measurement that actually separates the settings. Win rate against random
+        # saturates; drawing against perfect play does not.
+        optimal_opponent=MinimaxAgent("Minimax"),
+        optimal_games=curve_minimax_games,
     )
 
     # Final scoring of the trained agent on both matchups, so the results table has
@@ -118,14 +124,15 @@ def run_one(knob, value, episodes, eval_every, eval_games, final_games, seed):
 
 def run_study(episodes=DEFAULT_EPISODES, eval_every=DEFAULT_EVAL_EVERY,
               eval_games=DEFAULT_EVAL_GAMES, final_games=DEFAULT_FINAL_GAMES,
-              seed=DEFAULT_SEED):
+              seed=DEFAULT_SEED, curve_minimax_games=DEFAULT_CURVE_MINIMAX_GAMES):
     enable_minimax_cache()
     runs = []
 
     for knob, values in SWEEPS.items():
         for value in values:
             print(f"  training {knob}={value} ...", flush=True)
-            run = run_one(knob, value, episodes, eval_every, eval_games, final_games, seed)
+            run = run_one(knob, value, episodes, eval_every, eval_games, final_games, seed,
+                          curve_minimax_games=curve_minimax_games)
             runs.append(run)
             print(f"    final win rate vs random {run['vs_random']['a_win_rate']*100:5.1f}%"
                   f" | draw rate vs minimax {run['vs_minimax']['draw_rate']*100:5.1f}%")
@@ -196,6 +203,8 @@ def main():
                         help=f"games per curve point (default {DEFAULT_EVAL_GAMES})")
     parser.add_argument("--final-games", type=int, default=DEFAULT_FINAL_GAMES,
                         help=f"games for the final scoring of each run (default {DEFAULT_FINAL_GAMES})")
+    parser.add_argument("--curve-minimax-games", type=int, default=DEFAULT_CURVE_MINIMAX_GAMES,
+                        help=f"games per curve point against minimax (default {DEFAULT_CURVE_MINIMAX_GAMES})")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED,
                         help=f"random seed, recorded in the results (default {DEFAULT_SEED})")
     args = parser.parse_args()
@@ -209,6 +218,7 @@ def main():
         eval_games=args.eval_games,
         final_games=args.final_games,
         seed=args.seed,
+        curve_minimax_games=args.curve_minimax_games,
     )
 
     write_outputs(runs)

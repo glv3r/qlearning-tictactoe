@@ -37,6 +37,18 @@ KNOB_EXPECTATIONS = {
 }
 
 
+SMOOTHING_WINDOW = 5
+
+
+def rolling_mean(values, window):
+    """Trailing average, used to make the jumpy draw-rate line readable."""
+    smoothed = []
+    for index in range(len(values)):
+        chunk = values[max(0, index - window + 1):index + 1]
+        smoothed.append(sum(chunk) / len(chunk))
+    return smoothed
+
+
 def load_curves():
     with open(CURVES_JSON) as handle:
         return json.load(handle)
@@ -48,27 +60,61 @@ def load_csv(path):
 
 
 def plot_knob(knob, runs):
-    """One figure per knob, one line per value of that knob."""
-    figure, axes = plt.subplots(figsize=(8, 5))
+    """One figure per knob, one line per value of that knob, two panels stacked.
 
-    for run in sorted(runs, key=lambda r: r["value"]):
-        episodes = [point[0] for point in run["curve"]]
-        win_rates = [point[1] * 100 for point in run["curve"]]
+    Top panel is the win rate against random, which the spec asks for by name. Bottom
+    panel is the draw rate against minimax, which is the one that actually separates the
+    settings — see the note printed under the figure.
+    """
+    ordered = sorted(runs, key=lambda r: r["value"])
+    has_draw_rate = any("draw_rate" in point for run in runs for point in run["curve"])
 
+    if has_draw_rate:
+        figure, (top, bottom) = plt.subplots(2, 1, figsize=(8, 8), sharex=True)
+        panels = [top, bottom]
+    else:
+        figure, top = plt.subplots(figsize=(8, 5))
+        bottom = None
+        panels = [top]
+
+    for run in ordered:
         note = f" ({run['note']})" if run["note"] else ""
-        axes.plot(episodes, win_rates, linewidth=1.6,
-                  label=f"{knob} = {run['value']}{note}")
+        label = f"{knob} = {run['value']}{note}"
 
-    axes.set_title(KNOB_TITLES.get(knob, knob))
-    axes.set_xlabel("Training episodes (self-play games)")
-    axes.set_ylabel("Win rate vs random agent (%)")
-    axes.set_ylim(0, 100)
-    axes.grid(True, alpha=0.3)
-    axes.legend(loc="lower right")
+        episodes = [point["episodes"] for point in run["curve"]]
+        top.plot(episodes, [point["win_rate"] * 100 for point in run["curve"]],
+                 linewidth=1.6, label=label)
+
+        if bottom is not None:
+            points = [point for point in run["curve"] if "draw_rate" in point]
+            probe_episodes = [point["episodes"] for point in points]
+            draw_rates = [point["draw_rate"] * 100 for point in points]
+
+            # The raw draw rate is coarse and jumpy (see build_findings: both players are
+            # near-deterministic, so a probe is really the same two games repeated and the
+            # result quantises onto 0/50/100). Faint raw line so nothing is hidden, bold
+            # rolling mean on top so the trend is actually readable.
+            raw_line, = bottom.plot(probe_episodes, draw_rates, linewidth=1.0, alpha=0.25)
+            bottom.plot(probe_episodes, rolling_mean(draw_rates, SMOOTHING_WINDOW),
+                        linewidth=1.8, color=raw_line.get_color(), label=label)
+
+    top.set_title(KNOB_TITLES.get(knob, knob))
+    top.set_ylabel("Win rate vs random (%)")
+    top.legend(loc="lower right", fontsize=9)
+
+    if bottom is not None:
+        bottom.set_ylabel("Draw rate vs minimax (%)")
+        bottom.set_title("Against perfect play (100% = optimal)", fontsize=10)
+
+    for panel in panels:
+        panel.set_ylim(0, 100)
+        panel.grid(True, alpha=0.3)
+
+    panels[-1].set_xlabel("Training episodes (self-play games)")
 
     figure.text(0.5, 0.005, KNOB_EXPECTATIONS.get(knob, ""),
                 ha="center", fontsize=8, style="italic")
-    figure.tight_layout(rect=(0, 0.04, 1, 1))
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
 
     output = PLOTS_DIR / f"{knob}.png"
     figure.savefig(output, dpi=150)
@@ -80,7 +126,31 @@ def percent(value):
     return f"{float(value) * 100:.1f}%"
 
 
-def build_findings(study_rows):
+def build_quantisation_note(curves):
+    """Explain why the draw-rate panel is coarse and jumpy rather than a smooth curve."""
+    values = [point["draw_rate"] for run in curves for point in run["curve"]
+              if "draw_rate" in point]
+    if not values:
+        return []
+
+    on_grid = sum(1 for value in values if value in (0.0, 0.5, 1.0)) / len(values)
+
+    return [
+        "**A caveat on reading the lower panel.** Minimax plays deterministically, and a "
+        "greedy Q-agent is deterministic too apart from how it breaks ties between equally "
+        "valued moves. So a probe of N games isn't N independent samples — it is largely the "
+        "same two games (once as X, once as O) played over and over. Measured directly, the "
+        "fully trained agent produces only three distinct game lines in 200 games against "
+        f"minimax, and {on_grid*100:.0f}% of the points on that panel land exactly on 0%, 50% "
+        "or 100%. Read 50% as \"draws with one mark, loses with the other\", not as a "
+        "probability. The faint line is the raw measurement and the bold line is a "
+        f"{SMOOTHING_WINDOW}-point trailing average, since the raw signal flips between those "
+        "levels as tie-breaks shift mid-training.",
+        "",
+    ]
+
+
+def build_findings(study_rows, curves):
     """What the study actually showed, worked out from the numbers rather than assumed.
 
     Worth being careful here. The spec predicts each extreme setting will fail visibly on
@@ -133,12 +203,62 @@ def build_findings(study_rows):
         lines.append("")
 
     lines.append(
-        "**The alpha and epsilon predictions did not reproduce at 20,000 episodes.** High "
+        "**The alpha and epsilon predictions did not reproduce in the final numbers.** High "
         "alpha was expected to look noisy and unstable and fast epsilon decay was expected to "
-        "plateau early; both still reached a 100% draw rate against minimax. Tic-tac-toe is "
+        "plateau early; both still finished on a 100% draw rate against minimax. Tic-tac-toe is "
         "small enough (5,478 reachable states) that the agent visits the whole space many "
         "times over, which papers over settings that would be fatal on a larger problem. "
         "Reporting this rather than the prediction is the honest version."
+    )
+    lines.append("")
+
+    lines.extend(build_stability_note(curves))
+
+    return lines
+
+
+def build_stability_note(curves):
+    """How settled each setting was by the end, not just where it finished.
+
+    A single end-of-training number can't tell a setting that converged from one that
+    happened to be having a good day on the last measurement. Looking at the last quarter
+    of the probes separates those two.
+    """
+    lines = []
+    unstable = []
+
+    for run in curves:
+        points = [point for point in run["curve"] if "draw_rate" in point]
+        if not points:
+            continue
+
+        tail = points[-max(1, len(points) // 4):]
+        settled = sum(1 for point in tail if point["draw_rate"] == 1.0) / len(tail)
+        if settled < 0.75:
+            unstable.append((run, settled, len(tail)))
+
+    if not unstable:
+        return lines
+
+    lines.append(
+        "**Finishing at 100% is not the same as having converged.** Over the last quarter of "
+        "the training probes, these settings were still dropping in and out of optimal play "
+        "rather than holding it:"
+    )
+    lines.append("")
+    for run, settled, sampled in unstable:
+        lines.append(
+            f"- `{run['knob']} = {run['value']}` ({run['note']}): optimal on only "
+            f"{settled*100:.0f}% of the final {sampled} probes, despite a "
+            f"{run['vs_minimax_draw_rate']*100:.0f}% draw rate in the end-of-training scoring."
+        )
+    lines.append("")
+    lines.append(
+        "Slow epsilon decay is the clearest case. It is still roughly 60% exploratory when "
+        "training stops, so the Q-table is being churned right to the end and the greedy "
+        "policy it implies is only intermittently optimal. It scores 100% in the table because "
+        "the final measurement happens to land on a good moment. This is the strongest "
+        "argument in the study for reporting learning curves and not just final numbers."
     )
     lines.append("")
 
@@ -206,7 +326,8 @@ def build_results_md(matchup_rows, study_rows, curves):
             )
         lines.append("")
 
-        lines.extend(build_findings(study_rows))
+        lines.extend(build_findings(study_rows, curves))
+        lines.extend(build_quantisation_note(curves))
 
     lines.append("## Learning curves")
     lines.append("")
