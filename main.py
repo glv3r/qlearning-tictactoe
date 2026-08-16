@@ -84,5 +84,8 @@ if __name__ == '__main__':
     # replay(h, r)
 
 
-    train(agent=q1, episodes=10000, alpha=0.5, gamma=0.9, epsilon_decay=0.0001, min_epsilon=0.05)
+    # seed=6 was previously hardcoded inside train(). Passing it explicitly keeps this
+    # training run reproducing the exact Q-table that's committed as q_table_trained.
+    train(agent=q1, episodes=10000, alpha=0.5, gamma=0.9, epsilon_decay=0.0001,
+          min_epsilon=0.05, seed=6)
     q1.save_q_table("q_table_trained")
