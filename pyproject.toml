@@ -6,3 +6,6 @@ dependencies = [
     "matplotlib>=3.11.1",
     "pygame-ce>=2.5.8",
 ]
+
+[tool.setuptools]
+packages = ["agents", "environment", "evaluation"]

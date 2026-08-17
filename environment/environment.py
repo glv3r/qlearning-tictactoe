@@ -71,14 +71,28 @@ def apply_move(board: tuple[str, ...], index: int, mark: str) -> tuple:
     return tuple(l)
 
 
+# A function that returns *which* of the 8 lines was won, or None if none of them was.
+# check_winner only tells you who won; the UI also needs to know where, so it can draw the
+# winning streak through those three cells.
+def winning_line(board: tuple[str, ...]) -> tuple[int, int, int] | None:
+
+    # we loop through all lines and check whether the position of all 3 indexes have equal X or O.
+    # if that's the case then this is the line that won
+    for line in LINES:
+        (x, y, z) = line
+        if board[x] != EMPTY and (board[x] == board[y] == board[z]):
+            return line
+
+    return None
+
+
 # A function that checks all 8 lines that could give a win (LINES) and returns a winner if any
 def check_winner(board: tuple[str, ...]) -> str | None:
 
-    # we loop through all lines and check whether the position of all 3 indexes have equal X or O.
-    # if that's the case then we just return the value there as the winner
-    for (x, y, z) in LINES:
-        if board[x] != EMPTY and (board[x] == board[y] == board[z]):
-            return board[x]
+    # whoever's mark sits on the winning line is the winner
+    line = winning_line(board)
+    if line is not None:
+        return board[line[0]]
 
     if EMPTY not in board:
         return 'draw'
