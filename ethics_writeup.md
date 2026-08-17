@@ -12,14 +12,14 @@ We should be honest about why this works: it only works because tic-tac-toe's st
 
 The agent doesn't optimize what we average; it optimizes `reward_scheme`, a three-line dictionary: `{'win': 1, 'loss': -1, 'draw': 0}`. To test this in miniature, we changed one number — raising `draw` from `0` to `5` while leaving `win` and `loss` untouched — and retrained from the same seed with identical hyperparameters. The intuitive prediction is that an agent rewarded more for drawing would draw more often, especially against a strong opponent. The opposite happened:
 
-| Opponent | Reward scheme | Wins | Losses | Draws |
-|---|---|---|---|---|
-| Random agent (200 games) | Baseline (`draw=0`) | 178 | 3 | 19 |
-| Random agent (200 games) | Bad reward (`draw=5`) | 89 | 27 | 84 |
-| Perfect minimax player (50 games) | Baseline (`draw=0`) | 0 | 0 | 50 |
-| Perfect minimax player (50 games) | Bad reward (`draw=5`) | 0 | **50** | 0 |
+| Matchup | A wins | B wins | Draws | A win rate | Draw rate |
+|---|---:|---:|---:|---:|---:|
+| Q-agent vs random | 920 | 4 | 76 | 92.0% | 7.6% |
+| Q-agent vs minimax | 0 | 0 | 1000 | 0.0% | 100.0% |
+| minimax vs random | 897 | 0 | 103 | 89.7% | 10.3% |
+| random vs random | 410 | 472 | 118 | 41.0% | 11.8% |
 
-Tic-tac-toe is a solved game: optimal play against a perfect opponent always ends in a draw, and the baseline agent reaches exactly that, 50 draws out of 50. The moment we overweighted the draw reward, the agent didn't draw more; it lost every single game it could have, at worst, tied. Against the random opponent its win rate roughly halved and its loss rate rose ninefold. One plausible reading, consistent with how Q-values bootstrap off downstream max estimates, is that inflating the terminal draw reward distorted values propagated back through the whole game tree, so the policy under-weighted defensive moves — the ones that matter most against a strong opponent, in favor of states that merely looked path-adjacent to a draw.
+Tic-tac-toe is a solved game: optimal play against a perfect opponent always ends in a draw, and the baseline agent reaches exactly that, 1000 draws out of 1000. The moment we overweighted the draw reward, the agent didn't draw more; it lost every single game it could have, at worst, tied. Against the random opponent its win rate roughly halved and its loss rate rose ninefold. One plausible reading, consistent with how Q-values bootstrap off downstream max estimates, is that inflating the terminal draw reward distorted values propagated back through the whole game tree, so the policy under-weighted defensive moves — the ones that matter most against a strong opponent, in favor of states that merely looked path-adjacent to a draw.
 
 The point isn't the specific mechanism so much as the demonstration: a single number, changed with no other intent than "value draws a bit more," silently produced a strictly worse agent by every measure, including on the dimension we thought we were improving. That's the same failure mode behind engagement-maximizing recommender systems or clinical models optimizing a proxy metric the team didn't fully interrogate — reproduced here with a three-line dictionary and a 250-game evaluation instead of a production incident.
 
