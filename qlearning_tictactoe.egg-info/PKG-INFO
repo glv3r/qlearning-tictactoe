@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: qlearning-tictactoe
+Version: 0.1.0
+Requires-Python: >=3.14
+Requires-Dist: matplotlib>=3.11.1
+Requires-Dist: pygame-ce>=2.5.8
