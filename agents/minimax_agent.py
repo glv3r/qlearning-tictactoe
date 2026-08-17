@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 from environment.environment import Agent, apply_move, check_winner, current_player, legal_moves
 
 
@@ -18,8 +20,15 @@ class MinimaxAgent(Agent):
         return best_move
 
 
+# Remembering results we've already worked out. Without this, minimax re-searches the
+# whole game tree from scratch on every single move, which is about 0.7s per game and
+# makes a 1000-game matchup take roughly 12 minutes. The score for a given board is
+# always the same answer, so there's no reason to work it out twice. Both arguments are
+# hashable (the board is a tuple), and the recursive calls below go through this same
+# cached function, so the whole tree gets remembered, not just the first call.
+@lru_cache(maxsize=None)
 def minimax(board, player: str):
-  
+
     # base case to check for a result at the particular board's state
     r = check_winner(board=board)
 
