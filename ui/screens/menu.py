@@ -39,13 +39,14 @@ class MenuScreen(Screen):
         self.pvp = ModeCard((left, cards_y), 'PLAYER VS PLAYER',
                             'Grab a friend and take turns on one screen.',
                             'users', theme.O_CYAN, on_click=self._start_pvp)
+        
         self.pva = ModeCard((left + theme.MODE_CARD_W + gap, cards_y), 'PLAYER VS AGENT',
                             'Easy, Medium, or flat-out Impossible.',
                             'robot', theme.X_ORANGE, on_click=self._start_pva)
 
-        self.pva = ModeCard((left + theme.MODE_CARD_W + gap, cards_y), 'AGENT VS AGENT',
+        self.ava = ModeCard((left, cards_y + gap), 'AGENT VS AGENT',
                                     'To demonstrate how the various agents play against each other',
-                                    'robot', theme.X_ORANGE, on_click=self._start_pva)
+                                    'robot', theme.X_ORANGE, on_click=self._start_ava)
 
         self.sound = IconButton((theme.WIDTH - 24 - 24, 24 + 24), self._sound_icon(),
                                 on_click=self._toggle_sound)
@@ -67,6 +68,10 @@ class MenuScreen(Screen):
     def _start_pva(self):
         from ui.screens.difficulty import DifficultyScreen
         self.app.push(DifficultyScreen(self.app))
+
+    def _start_ava(self):
+            from ui.screens.name_entry import NameEntryScreen
+            self.app.push(NameEntryScreen(self.app))
 
     ## ---------- LOOP
 
